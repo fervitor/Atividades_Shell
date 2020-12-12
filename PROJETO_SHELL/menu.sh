@@ -8,28 +8,28 @@ while true; do
 	echo "PARA REALIZAR UM BACKUP POR SEMANA, OPÇÂO 3"
 	echo "PARA RESTAURAR UM BACKUP FEITO, OPÇÂO 10"
 	echo "PARA VISUALIZAR OS BACKUPS JA FEITOS, OPÇÂO 4"
-	echo "PARA SAIR DO SCRIPT DE BACKUP, OPÇÂO 0\n"
+	echo "PARA SAIR DO SCRIPT DE BACKUP, OPÇÂO 0"
 	read -p "DIGITE A OPÇÂO QUE DESEJA REALIZAR:" opcao
 	case $opcao in
-	1) #BACKUP POR HORA
+	1) #POR HORA
 		clear
 		source backup.sh
-		echo "${user} ${ip} ${dir} 1" >> $1
-		(crontab -l && echo "@hora ~/PROJETO_SHELL/backup.sh") | crontab -
+		echo "${user} ${dir} ${ip} 1" $1
+		(crontab -l && echo "@hourly ~/PROJETO_SHELL/backup.sh") | crontab -
 		echo " "
 		;;
-	2) #BACKUP POR DIA
+	2) #POR DIA
 		clear
 		source backup.sh
-		echo "${user} ${ip} ${dir} 2" >> $1
-		(crontab -l && echo "@dia ~/PROJETO_SHELL/backup.sh") | crontab -
+		echo "${user} ${dir} ${ip} 2" $1
+		(crontab -l && echo "@daily ~/PROJETO_SHELL/backup.sh") | crontab -
 		echo " "
 		;;
-	3) #BACKUP POR SEMANA
+	3) #POR SEMANA
 		clear
 		source backup.sh
-		echo "${user} ${ip} ${dir} 3" >> $1
-		(crontab -l && echo "@semanal ~/PROJETO_SHELL/backup.sh") | crontab -
+		echo "${user} ${dir} ${ip} 3" $1
+		(crontab -l && echo "@weekly ~/PROJETO_SHELL/backup.sh") | crontab -
 		echo " "
 		;;
 	10) #RESTAURAR BACKUP JA FEITO

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-data=$(date '+%d-%n-Y-%H-%M-%S')
+data=$(date '+%d-%m-%Y-%H-%M-%S')
 
 read -p "Informe o nome de usuário da máquina que será feito o backup:" user
 read -p "Informe o caminho absoluto do diretório que vai ser compactado:" dir
@@ -12,4 +12,4 @@ rsync -avz ${user}@${ip}:${dir} /tmp/auxiliar
 
 cd /tmp/auxiliar
 tar -cvzf $data.tar.gz /tmp/auxiliar && mv /tmp/auxiliar/$data.tar.gz ~/backups/$user
-cd ~/projeto
+
